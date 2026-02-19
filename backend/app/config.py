@@ -37,3 +37,11 @@ SUPABASE_URL = os.getenv("SUPABASE_URL","")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY","")
 SUPABASE_BUCKET = os.getenv("SUPABASE_BUCKET","")
 
+
+SUPABASE_MODELS_BUCKET=os.getenv("SUPABASE_MODELS_BUCKET","models")
+FACE_MODEL_PATH=os.getenv("FACE_MODEL_PATH","face_models/lbph_model.yml")
+FACE_LABELS_PATH=os.getenv("FACE_LABELS_PATH","face_models/labels.json")
+
+FACE_THRESHOLD=float(os.getenv("FACE_THRESHOLD","75"))
+CAMERA_INDEX=int(os.getenv("CAMERA_INDEX","0"))
+SCAN_SECONDS=int(os.getenv("SCAN_SECONDS","7"))

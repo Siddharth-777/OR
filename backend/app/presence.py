@@ -4,6 +4,7 @@ from datetime import datetime,timezone
 from fastapi import APIRouter,UploadFile,File,HTTPException
 from app.supabase_client import get_supabase
 from app.config import SUPABASE_BUCKET
+from app.services.face_service import scan_and_mark_attendance
 
 router=APIRouter()
 
@@ -65,3 +66,13 @@ def status(job_id:str):
         "state":res.data["status"],
         "created_at":res.data["created_at"]
     }
+
+
+@router.post("/presence/scan-face")
+def scan_face():
+    result = scan_and_mark_attendance()
+
+    if not result["ok"]:
+        raise HTTPException(status_code=401, detail=result["error"])
+
+    return result

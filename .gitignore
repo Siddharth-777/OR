@@ -57,3 +57,5 @@ venv
 .env
 
 __pycache__
+weights
+_tmp_lbph.yml
