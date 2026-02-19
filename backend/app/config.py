@@ -45,3 +45,7 @@ FACE_LABELS_PATH=os.getenv("FACE_LABELS_PATH","face_models/labels.json")
 FACE_THRESHOLD=float(os.getenv("FACE_THRESHOLD","75"))
 CAMERA_INDEX=int(os.getenv("CAMERA_INDEX","0"))
 SCAN_SECONDS=int(os.getenv("SCAN_SECONDS","7"))
+
+TRUST_PRESENT=float(os.getenv("TRUST_PRESENT","85"))
+TRUST_PRESENT_SOFT=float(os.getenv("TRUST_PRESENT_SOFT","70"))
+TRUST_SUSPICIOUS=float(os.getenv("TRUST_SUSPICIOUS","50"))

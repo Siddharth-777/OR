@@ -70,9 +70,7 @@ def status(job_id:str):
 
 @router.post("/presence/scan-face")
 def scan_face():
-    result = scan_and_mark_attendance()
-
+    result=scan_and_mark_attendance()
     if not result["ok"]:
-        raise HTTPException(status_code=401, detail=result["error"])
-
+        raise HTTPException(status_code=401,detail=result)
     return result
