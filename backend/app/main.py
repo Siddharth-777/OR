@@ -1,9 +1,11 @@
-#IMPORTS
 from fastapi import FastAPI
 from app.routes import router
+from app.services.scheduler_service import start_scheduler
 
-#APP
-app=FastAPI(title="OPTI-ROLL",version="0.1")
+app = FastAPI(title="OPTI-ROLL")
 
-#ROUTERS
 app.include_router(router)
+
+@app.on_event("startup")
+def start_background_jobs():
+    start_scheduler()

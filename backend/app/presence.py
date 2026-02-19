@@ -5,6 +5,7 @@ from fastapi import APIRouter,UploadFile,File,HTTPException
 from app.supabase_client import get_supabase
 from app.config import SUPABASE_BUCKET
 from app.services.face_service import scan_and_mark_attendance
+from app.services.revalidate_service import revalidate_attendance
 
 router=APIRouter()
 
@@ -73,4 +74,11 @@ def scan_face():
     result=scan_and_mark_attendance()
     if not result["ok"]:
         raise HTTPException(status_code=401,detail=result)
+    return result
+
+@router.post("/presence/revalidate-face")
+def revalidate_face(attendance_id:int):
+    result=revalidate_attendance(attendance_id)
+    if not result["ok"]:
+        raise HTTPException(status_code=400,detail=result)
     return result
